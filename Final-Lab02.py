@@ -1,44 +1,35 @@
-mealy = {
-    'A': {'0': ('A','A'), '1': ('B','B')},
-    'B': {'0': ('C','A'), '1': ('D','B')},
-    'C': {'0': ('D','C'), '1': ('B','B')},
-    'D': {'0': ('B','B'), '1': ('C','C')},
-    'E': {'0': ('D','C'), '1': ('E','C')},
-}
+def moore_machine(input_str):
+    transitions = {
+        'A_A': {'0': 'A_A', '1': 'B_B'},
+        'B_B': {'0': 'C_A', '1': 'D_B'},
+        'C_A': {'0': 'D_C', '1': 'B_B'},
+        'C_C': {'0': 'D_C', '1': 'B_B'},
+        'D_B': {'0': 'B_B', '1': 'C_C'},
+        'D_C': {'0': 'B_B', '1': 'C_C'},
+        'E_C': {'0': 'D_C', '1': 'E_C'}
+    }
+    
+    outputs = {
+        'A_A': 'A',
+        'B_B': 'B',
+        'C_A': 'A',
+        'C_C': 'C',
+        'D_B': 'B',
+        'D_C': 'C',
+        'E_C': 'C'
+    }
+    
+    current_state = 'A_A'
+    output_str = ''
+    
+    for symbol in input_str:
+        current_state = transitions[current_state][symbol]
+        output_str += outputs[current_state]
+    
+    return output_str
 
-inputs = ['0','1']
-
-def moore_key(state, out): return f"{state}_on{out}"
-
-
-moore_states = {}
-for s in mealy:
-    for inp in inputs:
-        ns, out = mealy[s][inp]
-        moore_states[moore_key(ns,out)] = out
-
-
-moore_underlying = {k: k.split('_on')[0] for k in moore_states}
-moore_trans = {}
-for key, underlying in moore_underlying.items():
-    moore_trans[key] = {}
-    for inp in inputs:
-        ns, out = mealy[underlying][inp]
-        moore_trans[key][inp] = moore_key(ns, out)
-
-
-def simulate(input_string, start_mealy='A'):
-    s = start_mealy
-    outputs = []
-    moore_seq = []
-    for ch in input_string:
-        ns, out = mealy[s][ch]
-        outputs.append(out)
-        moore_seq.append(moore_key(ns, out))
-        s = ns
-    return ''.join(outputs), moore_seq
-
-tests = ["00110", "11001", "1010110", "101111"]
-for t in tests:
-    outs, seq = simulate(t, 'A')
-    print(f"{t} -> {outs}   Moore seq: {seq}")
+# Process the given inputs
+inputs = ['00110', '11001', '1010110', '101111']
+for inp in inputs:
+    output = moore_machine(inp)
+    print(f"Input: {inp} -> Output: {output}")
