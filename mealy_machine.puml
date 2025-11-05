@@ -1,0 +1,21 @@
+@startuml
+title Mealy Machine
+
+state A
+state B
+state C
+state D
+state E
+
+A --> A : 0/A
+A --> B : 1/B
+B --> C : 0/A
+B --> D : 1/B
+C --> D : 0/C
+C --> B : 1/B
+D --> B : 0/B
+D --> C : 1/C
+E --> D : 0/C
+E --> E : 1/C
+
+@enduml
