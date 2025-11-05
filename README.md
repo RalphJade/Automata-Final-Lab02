@@ -1,4 +1,4 @@
-# automata
+#Automata Theory
 
 #MEALY Machine
 ![mealy](https://github.com/user-attachments/assets/cc291715-4349-4c4f-9d1d-5852596d3b70)
