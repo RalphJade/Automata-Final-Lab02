@@ -1,9 +1,11 @@
-Automata Theory
+## Mealy Machine
 
-#MEALY Machine
-![mealy](https://github.com/user-attachments/assets/cc291715-4349-4c4f-9d1d-5852596d3b70)
+This diagram shows the Mealy Machine definition:
 
+![Mealy Machine Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/RalphJade/Automata-Final-Lab02/main/mealy_machine.puml)
 
+## Moore Machine
 
-#MOORE Machine
-![moore](https://github.com/user-attachments/assets/82ef20be-f48c-4aae-89ed-3841e412a4f9)
+This diagram shows the equivalent Moore Machine definition:
+
+![Moore Machine Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/RalphJade/Automata-Final-Lab02/main/moore_machine.puml)
